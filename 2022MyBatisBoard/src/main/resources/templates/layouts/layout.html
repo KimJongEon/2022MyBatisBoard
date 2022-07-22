@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html
+lang="ko"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!-- IDE에서 thymeleaf 문법에 오류표시 안하도록 설정 -->
+
+<!-- [head] 영역 시작 -->
+<head><!-- bootstrap사용을 위해 뷰포트 삽입 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 부트스트랩 사용을 위한 공통 CSS -->
+<link href="/css/common/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+<!-- 공통적인 css -->
+<link rel="stylesheet" href="/css/fragments/header.css" />
+<link rel="stylesheet" href="/css/fragments/footer.css" />
+</head>
+<!-- [head] 영역 끝 -->
+
+<body>
+	<!--  페이지별 공통 header -->
+	<th:block th:replace="fragments/header.html :: header"/>
+	
+	<!-- 페이지 별 내용 들어갈 부분 -->
+	<th:block layout:fragment="content"></th:block>
+	
+	
+	<!-- 	Juqery js -->
+	<script src="/js/common/jquery-3.6.0.min.js"></script>
+	
+	<!-- 	BootStrap js -->
+	<script src="/js/common/bootstrap/bootstrap.min.js"></script>
+	
+	<!-- 개별적인 js -->
+	<th:block layout:fragment="js"></th:block>
+
+	<!-- 페이지 별 공통 footer -->
+	<th:block th:replace="fragments/footer.html :: footer"/>
+	
+	
+</body>
+</html>
