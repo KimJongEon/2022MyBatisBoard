@@ -2,6 +2,8 @@ package com.jongeon.mybatisboard.domain;
 
 import java.time.LocalDateTime;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,8 +18,22 @@ import lombok.NoArgsConstructor;
 public class MemberVO {
 	private Long mbrIdx; // PK
 	private String mbrEmail; // Email이 id
+	private String mbrNickName; // 회원 닉네임
 	private String mbrPassword; // 비밀번호 Spring Security 사용
 	private String mbrRole; // 회원 구분 ex) 회원, 소셜회원, 관리자
 	private LocalDateTime signupDate; // 가입시간
-		
-}
+	
+	// 회원가입 메소드 - view에서 받아온 회원정보 처리 (비밀번호 암호화)
+	public MemberVO signUp() {
+		MemberVO memberVO = MemberVO.builder()
+				.mbrEmail(mbrEmail)
+				.mbrNickName(mbrNickName)
+				.mbrPassword(
+						new BCryptPasswordEncoder().encode(
+								mbrPassword
+						) // encode End
+				) // mbrPassword End
+				.build();
+		return memberVO;
+	}// signUp() End
+} // MemberVO End
