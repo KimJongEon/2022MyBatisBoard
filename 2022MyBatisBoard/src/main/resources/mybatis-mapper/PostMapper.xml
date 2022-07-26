@@ -3,10 +3,20 @@
  
 <mapper namespace="com.jongeon.mybatisboard.mapper.PostMapper">
  
-<!--     <select id="getUserList" resultType="com.jpp.main.vo.UserVO"> -->
-<!--         select empno as no, emp_nm as name  -->
-<!--         from emp_info -->
-<!--         limit 10 -->
-<!--     </select> -->
+    <select id="postList" resultType="com.jongeon.mybatisboard.domain.PostVO">
+    	<![CDATA[
+        	select p.*, m.mbrNickName
+        	from POST_TB p, MEMBER_TB m
+        	where p.mbrIdx = m.mbrIdx
+        ]]>
+	</select>        
  
+ 	<select id="postDetail" resultType="com.jongeon.mybatisboard.domain.PostVO">
+ 		<![CDATA[
+        	select p.*, m.mbrNickName
+        	from POST_TB p, MEMBER_TB m
+        	where p.mbrIdx = m.mbrIdx
+        	and postNumber = #{postNumber}
+        ]]>
+ 	</select>
 </mapper>

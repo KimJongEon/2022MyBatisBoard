@@ -1,13 +1,10 @@
-package com.jongeon.mybatisboard.mapper;
+package com.jongeon.mybatisboard.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import com.jongeon.mybatisboard.domain.PostVO;
 
-@Mapper
-public interface PostMapper {
+public interface PostService {
 	
 	// 글 목록 메소드
 	public List<PostVO> postList();

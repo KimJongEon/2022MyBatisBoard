@@ -19,8 +19,8 @@ layout:decorate="~{layouts/layout}">
 		<article>
 			<div class="container mainDiv">
 					<span style="position: absolute; right: 14%;">
-						<span th:text="|작성자 : ${postDetail.mbr_id}  │  |"></span>
-						<span th:text="${postDetail.p_dt}"></span>
+						<span th:text="|작성자 : ${postDetail.mbrNickName}  │  |"></span>
+						<span th:text="${postDetail.postDate}"></span>
 						
 <!-- 						본인 일때 수정, 삭제 가능 -->
 						<span>
@@ -34,7 +34,7 @@ layout:decorate="~{layouts/layout}">
 					
 					<br/>
 				<div class="titleDiv">
-					<span th:text="${postDetail.p_title}" id="p_title"></span>
+					<span th:text="${postDetail.postTitle}" id="p_title"></span>
 
 					
 				</div>
@@ -48,17 +48,17 @@ layout:decorate="~{layouts/layout}">
 					<hr/>
 				</div>
 				<div class="contentDiv">
-					<span th:text="${postDetail.p_content}"></span>
+					<span th:text="${postDetail.postContent}"></span>
 					<br/><br/><br/><br/>
 				</div>
 				<hr/>
 				
 				<span>댓글</span>
 				<span>│</span>
-				<span th:text="|글 조회 수 : ${postDetail.p_read_cnt}|"></span>
+				<span th:text="|글 조회 수 : ${postDetail.postReadCount}|"></span>
 				<span>│</span>
 				<span>글 번호 : </span>
-				<span th:text="${postDetail.p_no}" class="p_no"></span>
+				<span th:text="${postDetail.postNumber}" class="p_no"></span>
 				<div class="input-group replyDiv" >
 				
     				<textarea class="form-control" id="replyTextArea" rows="3"></textarea>

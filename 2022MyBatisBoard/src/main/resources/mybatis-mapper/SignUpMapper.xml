@@ -3,10 +3,9 @@
  
 <mapper namespace="com.jongeon.mybatisboard.mapper.SignUpMapper">
  
-<!--     <select id="getUserList" resultType="com.jpp.main.vo.UserVO"> -->
-<!--         select empno as no, emp_nm as name  -->
-<!--         from emp_info -->
-<!--         limit 10 -->
-<!--     </select> -->
+<insert id="signUp" parameterType="com.jongeon.mybatisboard.domain.MemberVO">
+	insert into MEMBER_TB (mbrEmail, mbrNickName, mbrPassword, mbrRole) values
+	( #{mbrEmail}, #{mbrNickName}, #{mbrPassword}, #{mbrRole} )
+</insert>
  
 </mapper>

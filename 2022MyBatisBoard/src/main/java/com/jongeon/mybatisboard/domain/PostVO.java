@@ -20,5 +20,7 @@ public class PostVO {
 	private Long postReadCount; // 글 조회수
 	
 	private Long mbrIdx; // FK
+	
+	private String mbrNickName; //글 작성자(닉네임)
 }
 

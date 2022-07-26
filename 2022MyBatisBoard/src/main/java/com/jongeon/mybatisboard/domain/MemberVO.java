@@ -28,6 +28,7 @@ public class MemberVO {
 		MemberVO memberVO = MemberVO.builder()
 				.mbrEmail(mbrEmail)
 				.mbrNickName(mbrNickName)
+				.mbrRole("User")
 				.mbrPassword(
 						new BCryptPasswordEncoder().encode(
 								mbrPassword
