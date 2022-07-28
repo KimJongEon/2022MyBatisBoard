@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @Controller
 public class SignUpController {
-		private SignUpService signUpService;
+		private SignUpService signUpService; // 회원가입 서비스
 	
 		// 회원가입 페이지로 이동
 		@GetMapping("/signUpPage")
@@ -26,10 +26,9 @@ public class SignUpController {
 		@PostMapping("/signUp") //view단(form태그) 에서 /signUp으로 보낸걸 컨트롤러에서 받음
 		public String signUp(MemberVO memberVO, HttpServletRequest request) { // 회원가입 Dto 선언
 			
-			// 회원가입 서비스
+			// signUpService의 회원가입 메소드 실행
 			Long signUp = signUpService.signUp(memberVO);
 		
-			
 			return "redirect:/signUpPage";
 //			return "/board/login/logInPage.html";
 		} //signUp End

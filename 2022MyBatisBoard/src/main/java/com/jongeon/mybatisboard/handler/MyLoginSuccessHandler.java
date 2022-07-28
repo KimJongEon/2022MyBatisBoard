@@ -18,6 +18,7 @@ public class MyLoginSuccessHandler implements AuthenticationSuccessHandler {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		
+		// header 부분에 아이디 표시를 위해 authentication.getName()을 통해 세션에 저장
 		session.setAttribute("mySession", authentication.getName());
 		
 		

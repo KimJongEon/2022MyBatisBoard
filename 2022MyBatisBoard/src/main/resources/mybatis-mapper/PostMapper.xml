@@ -3,6 +3,7 @@
  
 <mapper namespace="com.jongeon.mybatisboard.mapper.PostMapper">
  
+ 	<!-- 글 목록 -->
     <select id="postList" resultType="com.jongeon.mybatisboard.domain.PostVO">
     	<![CDATA[
         	select p.*, m.mbrNickName
@@ -10,7 +11,8 @@
         	where p.mbrIdx = m.mbrIdx
         ]]>
 	</select>        
- 
+ 	
+ 	<!-- 글 상세 -->
  	<select id="postDetail" resultType="com.jongeon.mybatisboard.domain.PostVO">
  		<![CDATA[
         	select p.*, m.mbrNickName
@@ -19,4 +21,11 @@
         	and postNumber = #{postNumber}
         ]]>
  	</select>
+ 	
+ 	<!-- 글 작성 -->
+ 	<insert id="postRegister" parameterType="com.jongeon.mybatisboard.domain.PostVO">
+	insert into POST_TB (mbrIdx, postTitle, postContent) values
+	( #{mbrIdx}, #{postTitle}, #{postContent} )
+	</insert>
+	
 </mapper>

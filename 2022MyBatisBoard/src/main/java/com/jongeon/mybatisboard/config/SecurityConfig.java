@@ -59,9 +59,9 @@ public class SecurityConfig{
 			.loginPage("/") // 로그인 URL 
 			.loginProcessingUrl("/securityLogin") //Spring Security 가 해당 주소로 요청오는 로그인을 가로채서 대신 로그인해줌(서비스의 loadUserByUsername로 알아서)
 //			.defaultSuccessUrl("/", true) // 로그인 성공시 이동하게 되는 URL *컨트롤러에 해당 URL 맵핑 되어 있어야함 '/'가 첫 페이지인 postListPage로 맵핑되어있음
-			.successHandler(new MyLoginSuccessHandler())
-			.failureHandler(new MyLoginFailerHandler())
-//			.failureUrl("/loginPage") // 로그인 실패시 이동하게 되는 URL
+//			.failureUrl("/loginPage") // 로그인 실패시 이동하게 되는 URL			
+			.successHandler(new MyLoginSuccessHandler())//로그인 성공시 Handler 이용하여 처리
+			.failureHandler(new MyLoginFailerHandler())//로그인 실패시 handler 이용하여 처리
 			.permitAll() // 로그인시 이동하게 되는 URL 은 권한 없이 접근 가능
 			
 			.and().logout() // ##### 로그아웃 설정 #####

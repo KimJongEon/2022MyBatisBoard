@@ -1,7 +1,6 @@
 package com.jongeon.mybatisboard.domain;
 
 import java.time.LocalDateTime;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import lombok.AccessLevel;
@@ -37,4 +36,6 @@ public class MemberVO {
 				.build();
 		return memberVO;
 	}// signUp() End
+	
+	
 } // MemberVO End

@@ -14,4 +14,7 @@ public interface PostMapper {
 	
 	// 글 상세 페이지 메소드
 	public PostVO postDetail(Long postNumber);
+
+	// 글 작성 메소드
+	public Long postRegister(PostVO postVO);
 }

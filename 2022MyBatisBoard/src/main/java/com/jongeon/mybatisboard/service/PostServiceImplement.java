@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.jongeon.mybatisboard.domain.PostVO;
+import com.jongeon.mybatisboard.domain.SecurityMember;
 import com.jongeon.mybatisboard.mapper.PostMapper;
 import lombok.AllArgsConstructor;
 
@@ -26,6 +27,13 @@ public class PostServiceImplement implements PostService {
 	public PostVO postDetail(Long postNumber) {
 		// TODO Auto-generated method stub
 		return postMapper.postDetail(postNumber);
+	}
+	
+	// 글 작성 메소드
+	@Override
+	public Long postRegister(PostVO postVO) {
+		// TODO Auto-generated method stub
+		return postMapper.postRegister(postVO);
 	}
 
 }
