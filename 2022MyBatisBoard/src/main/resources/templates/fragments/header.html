@@ -15,7 +15,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <th:block th:fragment = "header">
 	<nav th:onClick="| location.href='/' | ">
 		<h1>header입니다. 클릭시 홈 화면으로</h1>
-		<a sec:authorize="isAnonymous()" th:href="@{/logInPage}" class="">로그인</a>
+		<a sec:authorize="isAnonymous()" th:href="@{/loginPage}" class="">로그인</a>
 		<a sec:authorize="isAuthenticated()" th:href="@{/securityLogOut}">로그아웃</a><!-- 인증된 사용자일 경우, 로그아웃 버튼을 노출줍니다.  --> 
 		<a href="/signUpPage"class="">회원가입</a>
 		<span sec:authentication="name"></span>님 <!-- username [mbr_id] 값을 가져옵니다 -->
