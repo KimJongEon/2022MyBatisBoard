@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.User;
 
 import lombok.Getter;
 
+@SuppressWarnings("serial")
 @Getter
 public class SecurityMember extends User{
 	private MemberVO memberVO;

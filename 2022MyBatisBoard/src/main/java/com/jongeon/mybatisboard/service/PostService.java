@@ -15,4 +15,7 @@ public interface PostService {
 	
 	// 글 작성 메소드
 	public Long postRegister(PostVO postVO);
+
+	// 제일 최신 글의 postNumber를 가져오는 메소드
+	public PostVO findPostNumber();
 }

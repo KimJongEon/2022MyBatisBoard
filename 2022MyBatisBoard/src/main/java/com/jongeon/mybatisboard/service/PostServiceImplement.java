@@ -36,4 +36,11 @@ public class PostServiceImplement implements PostService {
 		return postMapper.postRegister(postVO);
 	}
 
+	// 제일 최신 글의 postNumber를 가져오는 메소드
+	@Override
+	public PostVO findPostNumber() {
+		// TODO Auto-generated method stub
+		return postMapper.findPostNumber();
+	}
+
 }

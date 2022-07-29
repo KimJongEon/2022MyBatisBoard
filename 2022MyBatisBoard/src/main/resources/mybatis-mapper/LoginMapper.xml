@@ -3,7 +3,7 @@
  
 <mapper namespace="com.jongeon.mybatisboard.mapper.LoginMapper">
  
-    <select id="findUserForLogin" resultType="com.jongeon.mybatisboard.domain.MemberVO">
+    <select id="findUserUsingEmail" resultType="com.jongeon.mybatisboard.domain.MemberVO">
     	<![CDATA[
         	select *
         	from MEMBER_TB
@@ -11,4 +11,6 @@
         ]]>
 	</select>        
  
+ 
+ 	
 </mapper>

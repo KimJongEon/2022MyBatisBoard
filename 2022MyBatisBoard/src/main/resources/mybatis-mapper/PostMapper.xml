@@ -9,6 +9,7 @@
         	select p.*, m.mbrNickName
         	from POST_TB p, MEMBER_TB m
         	where p.mbrIdx = m.mbrIdx
+        	order by postNumber
         ]]>
 	</select>        
  	
@@ -27,5 +28,14 @@
 	insert into POST_TB (mbrIdx, postTitle, postContent) values
 	( #{mbrIdx}, #{postTitle}, #{postContent} )
 	</insert>
+	
+	<!-- 제일 최신 글의 postNumber를 가져온다-->
+	<select id="findPostNumber" resultType="com.jongeon.mybatisboard.domain.PostVO">
+ 		<![CDATA[
+        	select postNumber
+			from POST_TB
+			order by postNumber DESC limit 1
+        ]]>
+ 	</select>
 	
 </mapper>
