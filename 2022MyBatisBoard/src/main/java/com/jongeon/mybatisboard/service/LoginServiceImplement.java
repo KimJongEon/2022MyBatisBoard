@@ -33,9 +33,12 @@ public class LoginServiceImplement implements UserDetailsService, LoginService {
 		//로그인 한 사용자 찾음
 		MemberVO memberVO = findUserUsingEmail(mbrEmail);
 		
+		// User를 extends한 로그인한 사용자에 대한 memberVO를 매개변수로 가지는 SecurityMember 생성
+		// 그리고 SecurityMember에 memberVO 저장
+		// securityMember.memberVO.getXXXXX 꺼내어 사용
+		// session 대체 하기 위해 사용
 		SecurityMember securityMember = new SecurityMember(memberVO);
 		
-		// 로그인 시 SecurityMember에 memberVO 저장 
 		return securityMember;
 		
 //		세션에서 해당 유저 정보를 안가져올 때 쓰던 코드		

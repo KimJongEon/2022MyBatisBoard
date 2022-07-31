@@ -22,5 +22,7 @@ public class PostVO {
 	private Long mbrIdx; // FK
 	
 	private String mbrNickName; //글 작성자(닉네임)
-}
+	private String mbrEmail; // 글 작성자 아이디 : 글 수정 페이지에서 사용
+
+} // PostVO End
 

@@ -7,14 +7,10 @@ layout:decorate="~{layouts/layout}">
 <!-- IDE에서 thymeleaf 문법에 오류표시 안하도록 설정 -->
 <head>
 	<title>글 상세 페이지</title>
+	<link rel="stylesheet" href="/css/post/postDetailPage.css" />
 </head>
 
 <body>
-<th:block layout:fragment="content"> 
-테스트
-</th:block>
-
-
 <th:block layout:fragment="content">
 		<article>
 			<div class="container mainDiv">
@@ -22,11 +18,11 @@ layout:decorate="~{layouts/layout}">
 						<span th:text="|작성자 : ${postDetail.mbrNickName}  │  |"></span>
 						<span th:text="${postDetail.postDate}"></span>
 						
-<!-- 						본인 일때 수정, 삭제 가능 -->
-						<span>
-<!-- 						<span th:if="${session.memberVO_logIn.mbr_id == postDetail.mbr_id}" > -->
-							<input class="btn btn-dark" id="postEditPage" type="button" value="수정">
-							<input class="btn btn-dark" id="postDelBtn" type="button" value="삭제">
+						<!-- 본인 일때 수정, 삭제 가능 -->
+						<span th:if="${session.getMbrIdx == postDetail.mbrIdx}" >
+<!-- 							<input class="btn btn-dark" id="postEditPage" type="button" value="수정"> -->
+							<a th:href="@{/postEditPage(postNumber=${postDetail.postNumber}) }" id="postEditPage" role="button" class="btn btn-dark">수정</a>
+							<a th:href="@{/postDel(postNumber=${postDetail.postNumber}) }" id="postDel" class="btn btn-dark" role="button" onclick="return confirm('정말 삭제 하시겠습니까?');">삭제</a>
 						</span>
 <!-- 						뒤로가기 후 새로고침 (조회수가 늘어나는지 바로 확인하기 위해) -->
 						<a class="btn btn-dark" href="javascript:window.location.href = document.referrer;">목록</a>

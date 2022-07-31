@@ -13,10 +13,10 @@
         ]]>
 	</select>        
  	
- 	<!-- 글 상세 -->
+ 	<!-- 글 상세, 글 수정 페이지 -->
  	<select id="postDetail" resultType="com.jongeon.mybatisboard.domain.PostVO">
  		<![CDATA[
-        	select p.*, m.mbrNickName
+        	select p.*, m.mbrNickName, m.mbrEmail
         	from POST_TB p, MEMBER_TB m
         	where p.mbrIdx = m.mbrIdx
         	and postNumber = #{postNumber}
@@ -38,4 +38,18 @@
         ]]>
  	</select>
 	
+	<!-- 글 삭제 -->
+	<delete id="postDel"  parameterType="com.jongeon.mybatisboard.domain.PostVO">
+		delete
+		from POST_TB
+		where postNumber = #{postNumber}
+	</delete>
+	
+	<!-- 글 수정 -->
+	<update id="postEdit" parameterType="com.jongeon.mybatisboard.domain.PostVO">
+		update POST_TB
+		set postTitle = #{postTitle},
+		postContent = #{postContent}
+		where postNumber = #{postNumber}
+	</update>
 </mapper>

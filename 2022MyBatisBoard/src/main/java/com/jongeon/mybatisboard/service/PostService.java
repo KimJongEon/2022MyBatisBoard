@@ -18,4 +18,10 @@ public interface PostService {
 
 	// 제일 최신 글의 postNumber를 가져오는 메소드
 	public PostVO findPostNumber();
+
+	// 글 삭제 메소드
+	public Long postDel(Long postNumber);
+
+	// 글 수정 메소드
+	public Long postEdit(Long postNumber, String postTitle, String postContent);
 }

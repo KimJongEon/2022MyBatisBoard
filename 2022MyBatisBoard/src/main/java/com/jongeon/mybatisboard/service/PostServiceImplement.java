@@ -43,4 +43,18 @@ public class PostServiceImplement implements PostService {
 		return postMapper.findPostNumber();
 	}
 
+	// 글 삭제 메소드
+	@Override
+	public Long postDel(Long postNumber) {
+		// TODO Auto-generated method stub
+		return postMapper.postDel(postNumber);
+	}
+
+	//글 수정 메소드
+	@Override
+	public Long postEdit(Long postNumber, String postTitle, String postContent) {
+		// TODO Auto-generated method stub
+		return postMapper.postEdit(postNumber, postTitle, postContent);
+	}
+
 }

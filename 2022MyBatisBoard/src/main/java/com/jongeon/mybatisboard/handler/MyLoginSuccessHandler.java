@@ -12,7 +12,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import com.jongeon.mybatisboard.service.LoginService;
 
 public class MyLoginSuccessHandler implements AuthenticationSuccessHandler {
-	private LoginService loginService;
+	
 	
 	@Override
 	public void onAuthenticationSuccess(

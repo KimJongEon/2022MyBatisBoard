@@ -1,1 +1,6 @@
 @charset "UTF-8";
+
+/* 글 수정 폼 Div */
+.postRegisterDiv{
+	 margin-top:1%;
+}

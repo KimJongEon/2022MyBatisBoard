@@ -32,13 +32,18 @@ public class HomeController {
 			Model model,
 			@AuthenticationPrincipal SecurityMember securityMember
 			) {
+		// 로그인 유무 판단을 위해 null 체크
 		if(securityMember != null) {
+			// securityMember 에서 mbrNickName, mbrEmail 가져온다
 			String mbrNickName = securityMember.getMemberVO().getMbrNickName();
-			System.out.println(mbrNickName);
+			Long mbrIdx = securityMember.getMemberVO().getMbrIdx();
+//			System.out.println(mbrNickName); // 닉네임 가져오는지 확인
+			System.out.println(mbrIdx);
 			HttpSession session = request.getSession();
+			// 세션 null 체크
 			if(session != null) {
 				session.setAttribute("getMbrNickName", mbrNickName);
-//				session.setAttribute("b", "hi"); // 더 저장하고 싶으면 setAttribute 추가
+				session.setAttribute("getMbrIdx", mbrIdx);	
 				} // session if End
 		} // securityMember if End
 		
