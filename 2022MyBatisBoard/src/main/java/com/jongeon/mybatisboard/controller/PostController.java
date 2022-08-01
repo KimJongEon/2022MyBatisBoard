@@ -37,10 +37,13 @@ public class PostController {
 	
 	//글 쓰기 페이지로 이동
 	@GetMapping("/postRegisterPage")
-	public String postRegisterPage() {
-		
-		return "board/post/postRegisterPage.html";
-	}
+	public String postRegisterPage(@AuthenticationPrincipal SecurityMember securityMember) {
+		if(securityMember != null) {
+			return "board/post/postRegisterPage.html";
+		}else {
+			return "redirect:/loginPage";
+		}
+	} //postRegisterPage End
 	
 	// 글 등록
 	@PostMapping("/postRegister")
@@ -115,7 +118,7 @@ public class PostController {
 			postService.postEdit(postNumber, postTitle, postContent);
 			
 			// 해당 글 정보 model에 저장
-			model.addAttribute("postDetail", postService.postDetail(postNumber));
+			model.addAttribute("postDetail", postService.postDetail(postNumber));			
 			
 			// 해당 글로 redirect
 			return "redirect:/postDetailPage/" + postNumber;

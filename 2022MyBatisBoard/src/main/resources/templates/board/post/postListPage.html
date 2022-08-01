@@ -12,11 +12,10 @@ layout:decorate="~{layouts/layout}">
 </head>
 <body>
 <th:block layout:fragment="content">
-	<div>
-
+	<div >
 			<!-- 테이블 -->
-			<table class="table table-hover postListTable">
-				<thead class="thead-dark">
+			<table class="table table-hover table-borderless postListTable">
+				<thead class="table-primary ">
 					<tr>
 						<th>글 번호</th>
 						<th>제목</th>
@@ -37,18 +36,11 @@ layout:decorate="~{layouts/layout}">
 				</tbody>
 			</table>
 			<!-- 테이블 -->
-
-			<br/><br/><br/><br/>
-	로그인 하면 아래 페이지 확인 가능
-	<br/>
-	<a href="/postRegisterPage" class="">글 쓰기</a>
-	<br/>
-	<a href="/postEditPage" class="">글 수정</a>
-	<br/>
-	<!-- 프로젝트 첫 화면 -->
-	<a href="/" class="">글 목록</a>
-	<br/>
-	<br/>
+			
+		<p class="writeBtn">
+			<a href="/postRegisterPage" class="btn btn-primary">글 쓰기</a>
+		</p>
+	
 	</div>
 </th:block> <!-- thymeleaf block  -->
 

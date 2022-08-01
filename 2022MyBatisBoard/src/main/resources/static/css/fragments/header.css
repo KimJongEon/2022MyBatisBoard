@@ -1,5 +1,23 @@
 @charset "UTF-8";
+.mbrEmail{
+	font-size:1em;
+/* 	color:yellow; */
+	color:white;
+}
 
-h1{
-	color: skyblue;
+.LogOut{
+	font-size:1.5em;
+	display: inline;
+}
+
+.login{
+	font-size:1.5em;
+	display: inline;
+}
+
+.home{
+/* 	color:yellow; */
+	color:white;
+	font-size: 2.0em;
+	display: inline;
 }

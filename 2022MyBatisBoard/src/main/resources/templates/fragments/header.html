@@ -13,22 +13,42 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 </head>
 <body>
 <th:block th:fragment = "header">
-	<nav th:onClick="| location.href='/' | ">
-		<h1>header입니다. 클릭시 홈 화면으로</h1>
-		<!-- 로그인 하지 않았을 때 "로그인, 회원가입" 을 보여준다 -->
-		<a sec:authorize="isAnonymous()" th:href="@{/loginPage}" class="">로그인</a>
+<!-- nav 시작 -->
+<nav th:onClick="| location.href='/' | " class="navbar navbar-expand-sm navbar-dark bg-primary"> <!-- navbar-dark bg-dark -->
+
+	<div class="collapse navbar-collapse" >
+		<!-- 홈으로 가기 -->
+		<a href="/" class="nav-link home">BOARD</a>
 		
-		<!-- 로그인 했을 때  "로그아웃"만 보여준다-->
-		<a sec:authorize="isAuthenticated()" th:href="@{/securityLogOut}">로그아웃</a><!-- 인증된 사용자일 경우, 로그아웃 버튼을 노출줍니다.  --> 
-		
-		<!-- 로그인 하지 않았을 때 "로그인, 회원가입" 을 보여준다 -->
-		<a sec:authorize="isAnonymous()" href="/signUpPage"class="">회원가입</a>
-		
-		<!-- 로그인 했을 때 해당 아이디와 닉네임 표시 -->
-		<span sec:authorize="isAuthenticated()" sec:authentication="name"></span>
-		<span sec:authorize="isAuthenticated()" th:text=" '('+${session.getMbrNickName} + ')' + '님' "></span> <!-- springSecurity 로그인 으로 sec태그를 이용, [mbrEmail] 값을 가져옵니다 -->
-	</nav>
-	<hr/>
+		<ul class="navbar-nav ml-auto">
+			<!-- 로그인 하지 않았을 때 "로그인, 회원가입" 을 보여준다 -->
+			<li sec:authorize="isAnonymous()" class="nav-item">
+				<a th:href="@{/loginPage}" class="nav-link login">로그인</a>
+			</li>
+			
+			<!-- 로그인 하지 않았을 때 "로그인, 회원가입" 을 보여준다 -->
+			<li sec:authorize="isAnonymous()" class="nav-item">
+				<a href="/signUpPage" class="nav-link login">회원가입</a>
+			</li>
+			
+			<!-- 로그아웃 (세션 있을 때)-->
+			<li sec:authorize="isAuthenticated()" class="nav-item">
+				<!-- 로그인 했을 때 해당 아이디와 닉네임 표시 -->
+				<span sec:authorize="isAuthenticated()" sec:authentication="name" class="nav-item mbrEmail">
+				</span>
+				<span sec:authorize="isAuthenticated()" th:text=" '('+${session.getMbrNickName} + ')' + '님' " class="nav-item mbrEmail">
+				</span> <!-- springSecurity 로그인 으로 sec태그를 이용, [mbrEmail] 값을 가져옵니다 -->
+				
+				
+				<!-- 로그인 했을 때  "로그아웃"만 보여준다-->
+				<a th:href="@{/securityLogOut}" class="nav-link LogOut">로그아웃
+				</a><!-- 인증된 사용자일 경우, 로그아웃 버튼을 노출줍니다.  --> 
+			</li>
+			
+		</ul>
+	</div>
+</nav>
+<!-- nav 끝 -->
 </th:block>	
 
 </body>
