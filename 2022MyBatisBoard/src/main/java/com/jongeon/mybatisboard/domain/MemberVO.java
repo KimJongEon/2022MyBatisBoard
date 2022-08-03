@@ -27,7 +27,7 @@ public class MemberVO {
 		MemberVO memberVO = MemberVO.builder()
 				.mbrEmail(mbrEmail)
 				.mbrNickName(mbrNickName)
-				.mbrRole("user")
+				.mbrRole("ROLE_USER") // 회원가입 시 기본 ROLE 지정
 				.mbrPassword(
 						new BCryptPasswordEncoder().encode(
 								mbrPassword

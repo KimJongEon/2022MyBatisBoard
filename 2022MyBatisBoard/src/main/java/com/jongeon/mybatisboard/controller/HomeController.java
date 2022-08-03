@@ -25,7 +25,7 @@ public class HomeController {
 //		return "index.html";
 //	} 
 	
-	// 게시글 목록 페이지로 이동
+	//  ##### 게시글 목록 페이지로 이동 #####
 	@GetMapping("/")
 	public String signUpPage(
 			HttpServletRequest request,

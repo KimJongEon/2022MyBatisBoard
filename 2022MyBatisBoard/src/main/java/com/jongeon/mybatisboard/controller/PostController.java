@@ -22,7 +22,7 @@ import lombok.AllArgsConstructor;
 public class PostController {
 	private PostService postService; // post와 관련된 서비스
 	
-	//글 상세 페이지로 이동
+	// ##### 글 상세 페이지로 이동 #####
 	@GetMapping("/postDetailPage/{postNumber}")
 	public String postDetailPage(
 			Model model,
@@ -35,7 +35,7 @@ public class PostController {
 		return "board/post/postDetailPage.html";
 	}
 	
-	//글 쓰기 페이지로 이동
+	// ##### 글 쓰기 페이지로 이동 #####
 	@GetMapping("/postRegisterPage")
 	public String postRegisterPage(@AuthenticationPrincipal SecurityMember securityMember) {
 		if(securityMember != null) {
@@ -45,7 +45,7 @@ public class PostController {
 		}
 	} //postRegisterPage End
 	
-	// 글 등록
+	// ##### 글 등록 #####
 	@PostMapping("/postRegister")
 	public String postRegister(PostVO postVO,
 //			Model model,
@@ -71,7 +71,7 @@ public class PostController {
 		return "redirect:/postDetailPage/" + postNumber; // 작성한 글의 상세페이지로 이동
 	} // postRegister End
 	
-	// 글 삭제
+	// ##### 글 삭제 #####
 	@GetMapping("/postDel")
 	public String postDel(@RequestParam Long postNumber,
 			HttpServletRequest request) {
@@ -87,7 +87,7 @@ public class PostController {
 	} // postDel End
 	
 	
-	// 글 수정 페이지로 이동
+	// ##### 글 수정 페이지로 이동 #####
 	@GetMapping("/postEditPage")
 	public String postEditPage(@RequestParam Long postNumber,
 			Model model) {
@@ -99,7 +99,7 @@ public class PostController {
 		return "board/post/postEditPage.html";
 	}// postEditPage End
 	
-	// 글 수정
+	// ##### 글 수정 #####
 	@PostMapping("/postEdit")
 	public String postEdit(PostVO postVO,
 			HttpServletRequest request,

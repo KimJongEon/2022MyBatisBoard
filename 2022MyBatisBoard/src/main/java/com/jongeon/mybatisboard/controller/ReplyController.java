@@ -18,7 +18,7 @@ import lombok.AllArgsConstructor;
 public class ReplyController {
 	private ReplyService replyService;
 	
-	// 댓글 목록 : Ajax로 통신
+	//##### 댓글 목록 : Ajax로 통신 #####
 	@PostMapping("/replyList")
 	@ResponseBody
 	public List<ReplyVO> replyList(@RequestBody Map<String, Object> params){
@@ -30,7 +30,7 @@ public class ReplyController {
 		return replyVO;
 	}
 	
-	// 댓글 등록
+	// ##### 댓글 등록 #####
 	@PostMapping("/replyRegister")
 	@ResponseBody
 	public Long replyRegister(@RequestBody Map<String, Object> params) {

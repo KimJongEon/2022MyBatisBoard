@@ -21,13 +21,13 @@ import lombok.AllArgsConstructor;
 public class SignUpController {
 	private SignUpService signUpService; // 회원가입 서비스
 
-	// 회원가입 페이지로 이동
+	// ##### 회원가입 페이지로 이동 #####
 	@GetMapping("/signUpPage")
 	public String signUpPage() {
 		return "board/signup/signUpPage.html";
 	}
 
-	// ########## 회원가입 ##########
+	// ##### 회원가입 #####
 	@PostMapping("/signUp") // view단(form태그) 에서 /signUp으로 보낸걸 컨트롤러에서 받음
 	public String signUp(MemberVO memberVO, HttpServletResponse response) throws IOException { // 회원가입 Dto 선언
 		String mbrEmail = memberVO.getMbrEmail();
@@ -51,7 +51,7 @@ public class SignUpController {
 		}
 	} // signUp End
 
-	// mbrEmail 중복 체크
+	// ##### mbrEmail 중복 체크 #####
 	@ResponseBody
 	@GetMapping("/mbrEmailCheck")
 	public String mbrEmailCheck(MemberVO memberVO) {
@@ -66,7 +66,7 @@ public class SignUpController {
 		}
 	} // mbrEmailCheck End
 
-	// mbrNickName 중복 체크
+	// ##### mbrNickName 중복 체크 #####
 	@ResponseBody
 	@GetMapping("/mbrNickNameCheck")
 	public String mbrNickNameCheck(MemberVO memberVO) {
