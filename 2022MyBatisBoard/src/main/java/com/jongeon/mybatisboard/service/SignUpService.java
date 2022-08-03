@@ -9,4 +9,7 @@ public interface SignUpService {
 
 	// mbrEmail 중복 체크
 	public Long mbrEmailCheck(String mbrEmail);
+
+	// mbrNickName 중복 체크
+	public Long mbrNickNameCheck(String mbrNickName);
 }

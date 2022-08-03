@@ -1,7 +1,9 @@
 $(function() {
-	var idCheck = false;
-	var pwCheck = false;
-
+	var idCheck = false; //mbrEmail 확인을 위한 변수 선언
+	var pwCheck = false; // mbrPassword 확인을 위한 변수 선언
+	var nickNameCheck = false; // mbrNickName 확인을 위한 변수 선언
+	
+	
 	// 회원가입시 아이디, 비밀번호, 비밀번호확인, 이름, 휴대폰번호 체크
 	$("#signUpBtn").click(function() {
 		var pwd1 = $("#mbrPassword_01").val();
@@ -59,8 +61,9 @@ $(function() {
 		}
 	}); //click function END
 
+
+// ##### mbrPassword_01, mbrPassword_02 ##### Start
 	// 비밀번호 확인
-	//	$(function(){
 	$("input").blur(function() {
 
 		var pwd1 = $("#mbrPassword_01").val();
@@ -72,44 +75,45 @@ $(function() {
 				$("#pw-danger").hide();
 				pwCheck = true;
 
-				if (idCheck == true && pwCheck == true) {
+				if (idCheck == true && pwCheck == true && nickNameCheck == true) {
 					$("#signUpBtn").attr("disabled", false);
-				} else if (idCheck == false || pwCheck == false) {
+				} else if (idCheck == false || pwCheck == false || nickNameCheck == false) {
 					$("#signUpBtn").attr("disabled", true);
 				}
-				//                    console.log("pwCheck 확인하기 : " + pwCheck);
 			} else {
 				$("#pw-success").hide();
 				$("#pw-danger").show();
 				pwCheck = false;
 
-				if (idCheck == true && pwCheck == true) {
+				if (idCheck == true && pwCheck == true && nickNameCheck == true) {
 					$("#signUpBtn").attr("disabled", false);
-				} else if (idCheck == false || pwCheck == false) {
+				} else if (idCheck == false || pwCheck == false || nickNameCheck == false) {
 					$("#signUpBtn").attr("disabled", true);
 				}
 				//                    console.log("pwCheck 확인하기 : " + pwCheck);
 			}
 		}
 	}); // input keyup END
-	//    });
+// ##### mbrPassword_01, mbrPassword_02 ##### End
 
+
+// ##### mbrEmail ##### Start
 	//아이디 중복 체크
 	$("#mbrEmail").blur(function() {
 		var mbrEmail = $('#mbrEmail').val();
-		
+
 		if (mbrEmail == "") {
-			$("#id-write").hide();
+			$("#id-write").show();
 			$("#id-success").hide();
 			$("#id-emailCheck").hide();
 			$("#id-danger").hide();
 			idCheck = false;
 
-			if (idCheck == true && pwCheck == true) {
+			if (idCheck == true && pwCheck == true && nickNameCheck == true) {
 				$("#signUpBtn").attr("disabled", false);
-			} else if (idCheck == false || pwCheck == false) {
+			} else if (idCheck == false || pwCheck == false || nickNameCheck == false) {
 				$("#signUpBtn").attr("disabled", true);
-			}
+			} // else if End
 
 		} else if ($("#mbrEmail").val().length > 0) {
 			$.ajax({
@@ -124,9 +128,9 @@ $(function() {
 						$("#id-emailCheck").hide();
 						idCheck = false;
 
-						if (idCheck == true && pwCheck == true) {
+						if (idCheck == true && pwCheck == true && nickNameCheck == true) {
 							$("#signUpBtn").attr("disabled", false);
-						} else if (idCheck == false || pwCheck == false) {
+						} else if (idCheck == false || pwCheck == false || nickNameCheck == false) {
 							$("#signUpBtn").attr("disabled", true);
 						}
 
@@ -151,9 +155,9 @@ $(function() {
 							$("#id-emailCheck").hide();
 							idCheck = true;
 
-							if (idCheck == true && pwCheck == true) {
+							if (idCheck == true && pwCheck == true && nickNameCheck == true) {
 								$("#signUpBtn").attr("disabled", false);
-							} else if (idCheck == false || pwCheck == false) {
+							} else if (idCheck == false || pwCheck == false || nickNameCheck == false) {
 								$("#signUpBtn").attr("disabled", true);
 							}
 							//                        console.log(idCheck);
@@ -161,12 +165,62 @@ $(function() {
 					}
 				}
 			}); //ajax END
-
-
 		}
-
 	}); //mbrEmail.blur END
+// ##### mbrEmail ##### End
 
 
+// ##### mbrNickName ##### Start
+	// 닉네임(mbrNickName) 중복 체크
+	$("#mbrNickName").blur(function() {
+		var mbrNickName = $('#mbrNickName').val();
+
+		if (mbrNickName == "") {
+			$("#mbrNickName-success").hide();
+			$("#mbrNickName-danger").hide();
+			$("#mbrNickName-write").show();
+			idCheck = false;
+
+			if (idCheck == true && pwCheck == true && nickNameCheck == true) {
+				$("#signUpBtn").attr("disabled", false);
+			} else if (idCheck == false || pwCheck == false || nickNameCheck == false) {
+				$("#signUpBtn").attr("disabled", true);
+			} // else if End
+
+		} else if ($("#mbrNickName").val().length > 0) {
+			$.ajax({
+				type: "GET",
+				data: { "mbrNickName": mbrNickName },
+				url: "/mbrNickNameCheck",
+				success: function(data) {
+					if (data == "fail") { // 닉네임이 중복일때
+						$("#mbrNickName-success").hide();
+						$("#mbrNickName-danger").show();
+						$("#mbrNickName-write").hide();
+						nickNameCheck = false;
+
+						if (idCheck == true && pwCheck == true && nickNameCheck == true) {
+							$("#signUpBtn").attr("disabled", false);
+						} else if (idCheck == false || pwCheck == false || nickNameCheck == false) {
+							$("#signUpBtn").attr("disabled", true);
+						}
+
+					} else if (data == "success") { // 닉네임 중복이 아닐 때
+						$("#mbrNickName-success").show();
+						$("#mbrNickName-danger").hide();
+						$("#mbrNickName-write").hide();
+						nickNameCheck = true;
+
+						if (idCheck == true && pwCheck == true && nickNameCheck == true) {
+							$("#signUpBtn").attr("disabled", false);
+						} else if (idCheck == false || pwCheck == false || nickNameCheck == false) {
+							$("#signUpBtn").attr("disabled", true);
+						}
+					}
+				} // success: function(data) End
+			}); //ajax END
+		} // $("#mbrNickName").val().length > 0 End
+	}); // mbrNickName.blur END
+// ##### mbrNickName ##### End
 
 }); // function() END

@@ -17,5 +17,15 @@
         	where mbrEmail = #{mbrEmail}
         ]]>
 	</select>
+	
+	<!-- mbrEmail 중복체크 -->
+	<select id="mbrNickNameCheck" resultType="Long">
+    	<![CDATA[
+        	select count(*)
+        	from MEMBER_TB
+        	where mbrNickName = #{mbrNickName}
+        ]]>
+	</select>
+	
 	        
 </mapper>

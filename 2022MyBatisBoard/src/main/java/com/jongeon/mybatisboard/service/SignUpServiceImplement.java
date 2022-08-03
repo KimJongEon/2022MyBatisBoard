@@ -32,4 +32,11 @@ public class SignUpServiceImplement implements SignUpService {
 		return signUpMapper.mbrEmailCheck(mbrEmail);
 	}
 	
+	// mbrNickName 중복 체크
+	@Override
+	public Long mbrNickNameCheck(String mbrNickName) {
+		// TODO Auto-generated method stub
+		return signUpMapper.mbrNickNameCheck(mbrNickName);
+	}
+	
 }

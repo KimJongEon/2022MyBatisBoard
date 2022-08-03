@@ -20,13 +20,16 @@ layout:decorate="~{layouts/layout}">
 				<br/>
 				
 				<label for="mbr_id" class="sr-only">Email ( id )</label>
+				<br/>
 				<!-- Spring Security 사용을 위해 로그인 시 아이디 name 값은 "username" 이어야 한다 -->
+				<!-- 아이디(이메일) 입력란 -->
 				<input type="text" id="mbrEmail" name="mbrEmail" class="form-control" placeholder="이메일" required autofocus>
-				<BR>
+				<BR/>
 				
 				<label for="inputPassword" class="sr-only">Password</label>
+				<!-- 비밀번호 입력란 -->
 				<input type="password" id="mbrPassword" name="mbrPassword" class="form-control" placeholder="비밀번호" required>
-				<br>
+				<br/>
 				
 				<a href="/signUpPage" class="nav-link signUpPage">회원가입</a>
 				
