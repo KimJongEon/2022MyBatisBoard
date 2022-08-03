@@ -12,23 +12,24 @@ import lombok.AllArgsConstructor;
 public class SignUpServiceImplement implements SignUpService {
 	private SignUpMapper signUpMapper;
 	
+	//회원가입
 	@Override
 	public Long signUp(MemberVO memberVO) {
 		// TODO Auto-generated method stub
-
-		System.out.println("서비스확인@@@@@@@@");
-		System.out.println(memberVO.signUp().getMbrEmail());
-		System.out.println(memberVO.signUp().getMbrPassword());
-		System.out.println(memberVO.signUp().getMbrNickName());
-		System.out.println(memberVO.signUp().getMbrRole());
-		
 //		try {
 //			signUpMapper.signUp(memberVO.signUp());
 //		} catch (Exception e) {
 //			System.out.println(e.getMessage());
 //		}
-		
 		return signUpMapper.signUp(memberVO.signUp());
+	}
+
+	// mbrEmail 중복 체크
+	@Override
+	public Long mbrEmailCheck(String mbrEmail) {
+		// TODO Auto-generated method stub
+		
+		return signUpMapper.mbrEmailCheck(mbrEmail);
 	}
 	
 }

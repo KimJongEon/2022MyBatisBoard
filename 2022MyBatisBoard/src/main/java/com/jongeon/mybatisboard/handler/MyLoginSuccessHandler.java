@@ -23,9 +23,7 @@ public class MyLoginSuccessHandler implements AuthenticationSuccessHandler {
 		// TODO Auto-generated method stub
 		
 		String mbrEmail = authentication.getName();
-		System.out.println(mbrEmail);
-	
-		System.out.println("MyLoginSuccessHandler 여기 오나요 @@@@@@@@@@@@@@@@@@@@@@@@@@@");
+//		System.out.println("MyLoginSuccessHandler 여기 오나요 @@@@@@@@@@@@@@@@@@@@@@@@@@@" + mbrEmail);
 		response.sendRedirect("/");
 		
 	}

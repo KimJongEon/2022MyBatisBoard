@@ -11,4 +11,7 @@ public interface SignUpMapper {
 	// 회원가입 메소드
 	public Long signUp(MemberVO memberVO);
 
+	// mbrEmail 중복 체크
+	public Long mbrEmailCheck(String mbrEmail);
+
 }

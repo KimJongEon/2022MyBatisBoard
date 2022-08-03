@@ -14,7 +14,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body>
 <th:block th:fragment = "header">
 <!-- nav 시작 -->
-<nav th:onClick="| location.href='/' | " class="navbar navbar-expand-sm navbar-dark bg-primary"> <!-- navbar-dark bg-dark -->
+<nav th:onClick="| location.href='/' | " class="navbar navbar-expand-sm navbar-dark bg-primary headerBar"> <!-- navbar-dark bg-dark -->
 
 	<div class="collapse navbar-collapse" >
 		<!-- 홈으로 가기 -->
@@ -34,11 +34,12 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 			<!-- 로그아웃 (세션 있을 때)-->
 			<li sec:authorize="isAuthenticated()" class="nav-item">
 				<!-- 로그인 했을 때 해당 아이디와 닉네임 표시 -->
-				<span sec:authorize="isAuthenticated()" sec:authentication="name" class="nav-item mbrEmail">
+				<span id="mbrEmail" sec:authorize="isAuthenticated()" sec:authentication="name" class="nav-item mbrEmail">
 				</span>
-				<span sec:authorize="isAuthenticated()" th:text=" '('+${session.getMbrNickName} + ')' + '님' " class="nav-item mbrEmail">
+				<span id="mbrNickName" sec:authorize="isAuthenticated()" th:text=" '('+${session.getMbrNickName} + ')' + '님' " class="nav-item mbrEmail">
 				</span> <!-- springSecurity 로그인 으로 sec태그를 이용, [mbrEmail] 값을 가져옵니다 -->
-				
+				<!-- 댓글 작성 시 session에서 가져온 mbrIdx 사용  -->
+				<span th:text="${session.getMbrIdx}" style="display:none;" id="mbrIdx"></span>
 				
 				<!-- 로그인 했을 때  "로그아웃"만 보여준다-->
 				<a th:href="@{/securityLogOut}" class="nav-link LogOut">로그아웃

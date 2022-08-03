@@ -27,7 +27,7 @@ public class MyLoginFailerHandler implements AuthenticationFailureHandler {
 		PrintWriter out = response.getWriter();
 		
 		//오류확인
-		accessException.printStackTrace();
+//		accessException.printStackTrace();
 
 		if (accessException instanceof AuthenticationServiceException) {
 //			request.setAttribute("error", "존재하지 않는 사용자입니다.");
@@ -38,7 +38,7 @@ public class MyLoginFailerHandler implements AuthenticationFailureHandler {
 		} else if(accessException instanceof BadCredentialsException) {
 			System.out.println("비밀번호 틀림");
 //			request.setAttribute("error", "비밀번호가 틀립니다.");
-			out.print("<script>alert('비밀번호가 일치하지 않습니다.');");
+			out.print("<script>alert('존재하지 않는 아이디거나 비밀번호가 일치하지 않습니다.');");
 			out.print("location.href='/loginPage' ");
 			out.print("</script>");
 			

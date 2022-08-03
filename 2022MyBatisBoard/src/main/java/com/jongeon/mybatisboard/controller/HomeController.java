@@ -38,7 +38,7 @@ public class HomeController {
 			String mbrNickName = securityMember.getMemberVO().getMbrNickName();
 			Long mbrIdx = securityMember.getMemberVO().getMbrIdx();
 //			System.out.println(mbrNickName); // 닉네임 가져오는지 확인
-			System.out.println(mbrIdx);
+//			System.out.println(mbrIdx);
 			HttpSession session = request.getSession();
 			// 세션 null 체크
 			if(session != null) {

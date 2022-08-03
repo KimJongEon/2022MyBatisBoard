@@ -2,12 +2,12 @@
 
 /* 글 뷰 Div */
 .mainDiv{
-	 margin-top:3%;
+	 margin-top:1%;
 }
 .titleDiv{
 	width:100%;
 }
 
-#p_title{
+#postTitle{
 	font-size:2.5em;
 }

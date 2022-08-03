@@ -21,4 +21,5 @@ public class ReplyVO {
 	private Long mbrIdx; // FK
 	private Long postNumber; // FK
 	
+	private String mbrNickName; // 댓글 닉네임 표시
 }
