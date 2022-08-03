@@ -20,35 +20,30 @@ layout:decorate="~{layouts/layout}">
 		</div>
 		<div class="card-body">
 			<form class="form-signin" method="POST" action="/signUp" >
-<!-- 				<h5 class="form-signin-heading">회원가입 정보를 입력하세요</h5> -->
+				<!--아이디 입력란 -->
+				<input type="text" id="mbrEmail" name="mbrEmail" class="form-control" placeholder="이메일(아이디)" maxlength="40" required autofocus/>
+				<br/>
 				<div class="alert alert-success" id="id-success">사용가능한 아이디 입니다.</div>
 				<div class="alert alert-danger" id="id-danger">이미 사용중인 아이디 입니다.</div>
+				<div class="alert alert-danger" id="id-emailCheck">이메일형식이 올바르지 않습니다.</div>
 				<div class="alert alert-danger" id="id-write">아이디를 입력해주세요.</div>
-				<input type="text" id="mbrEmail" name="mbrEmail" class="form-control" placeholder="이메일(아이디)"
-				maxlength="40" required autofocus/>
-
-<!-- 				<div align="left"> -->
-<!-- 					<input type="button" id="idCheck" name="idCheck" class="btn btn-dark" value="중복확인"/> -->
-<!-- 				</div> -->
-				<br/>
 				
+				<!--첫 번째 비밀번호 입력란 -->
 				<input type="password" name="mbrPassword" id="mbrPassword_01" maxlength="50" class="form-control password" placeholder="비밀번호 확인"  required/>
 				<br/>
 				
+				<!-- 두 번째 비밀번호 입력란 -->
 				<input type="password" id="mbrPassword_02" maxlength="50" class="form-control password" placeholder="비밀번호 확인" required/>
+				<br/>
 				<div class="alert alert-success" id="pw-success">비밀번호가 일치합니다.</div>
 				<div class="alert alert-danger" id="pw-danger">비밀번호가 일치하지 않습니다.</div>
-				<br/>
-
+				
+				<!-- 닉네임 입력란 -->
 				<input type="text" id="mbrNickName" name="mbrNickName" class="form-control" maxlength="10" placeholder="닉네임" required/>
 				<br/>
 				
-<!-- 				<input type="text" id="tel_no" name="tel_no" class="form-control" maxlength="11" placeholder="01022227777" required/> -->
-				<br/>
-				
+				<!-- 완료버튼 및 다시 입력 링크 -->
 				<button id="signUpBtn" class="btn btn-success" type="submit" disabled="disabled" >완료</button>
-				
-<!-- 				<button id="signUpBtn" class="btn btn-dark" type="submit" disabled="disabled">완료</button> -->
 				<a href="/signUpPage" id="cancelBtn" class="btn btn-success" >다시 입력하기</a>
 			</form>
 
