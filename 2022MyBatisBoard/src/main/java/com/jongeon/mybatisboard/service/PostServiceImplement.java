@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.jongeon.mybatisboard.domain.PagingVO;
 import com.jongeon.mybatisboard.domain.PostVO;
-import com.jongeon.mybatisboard.domain.SecurityMember;
 import com.jongeon.mybatisboard.mapper.PostMapper;
 import lombok.AllArgsConstructor;
 
@@ -15,11 +15,13 @@ import lombok.AllArgsConstructor;
 public class PostServiceImplement implements PostService {
 	private PostMapper postMapper;
 	
-	//글 목록
+	//글 목록, 페이징 추가
 	@Override
-	public List<PostVO> postList() {
+	public List<PostVO> postList(PagingVO pagingVO) {
 		// TODO Auto-generated method stub
-		return postMapper.postList();
+		
+		return postMapper.postList(pagingVO);
+		
 	}
 	
 	//글 상세 페이지
@@ -55,6 +57,13 @@ public class PostServiceImplement implements PostService {
 	public Long postEdit(Long postNumber, String postTitle, String postContent) {
 		// TODO Auto-generated method stub
 		return postMapper.postEdit(postNumber, postTitle, postContent);
+	}
+
+	//	페이징을 위한 게시글 전체 개수 가져오기
+	@Override
+	public int postListCnt() {
+		// TODO Auto-generated method stub
+		return postMapper.postListCnt();
 	}
 
 }

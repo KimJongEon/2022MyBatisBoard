@@ -9,7 +9,8 @@
         	select p.*, m.mbrNickName
         	from POST_TB p, MEMBER_TB m
         	where p.mbrIdx = m.mbrIdx
-        	order by postNumber
+        	order by postNumber desc
+        	LIMIT #{startList}, #{listSize};
         ]]>
 	</select>        
  	
@@ -52,4 +53,17 @@
 		postContent = #{postContent}
 		where postNumber = #{postNumber}
 	</update>
+	
+	<!-- 페이징 처리를 위한 sql문▼▼▼▼▼▼▼▼ -->
+	
+	<!-- 전체 글 갯수를 얻어오는 sql문 -->
+	<select id="postListCnt" resultType="int">
+		<![CDATA[
+			SELECT
+			count(*) as postListCnt
+			FROM POST_TB
+		]]>
+	</select>
+	<!-- 페이징 처리를 위한 sql문▲▲▲▲▲▲▲▲ -->
+	
 </mapper>

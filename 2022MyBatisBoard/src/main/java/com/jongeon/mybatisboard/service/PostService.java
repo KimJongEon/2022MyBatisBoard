@@ -2,13 +2,13 @@ package com.jongeon.mybatisboard.service;
 
 import java.util.List;
 
+import com.jongeon.mybatisboard.domain.PagingVO;
 import com.jongeon.mybatisboard.domain.PostVO;
-import com.jongeon.mybatisboard.domain.SecurityMember;
 
 public interface PostService {
 	
-	// 글 목록 메소드
-	public List<PostVO> postList();
+	// 글 목록 메소드, 페이징 추가 (PagingVO)
+	public List<PostVO> postList(PagingVO pagingVO);
 	
 	// 글 상세 페이지 메소드
 	public PostVO postDetail(Long postNumber);
@@ -24,4 +24,7 @@ public interface PostService {
 
 	// 글 수정 메소드
 	public Long postEdit(Long postNumber, String postTitle, String postContent);
+	
+	// 페이징을 위한 게시글 전체 개수 가져오기
+	public int postListCnt();
 }

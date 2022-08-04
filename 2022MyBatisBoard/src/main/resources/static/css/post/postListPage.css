@@ -5,10 +5,10 @@
 /* 	margin-top:1%; */
 }
 
-/* 페이징 넘버 */
-/* .paginationNumber{ */
-/* 	justify-content: center; */
-/* } */
+페이징 넘버
+.pagingVONumber{
+	justify-content: center;
+}
 
 /* 글 쓰기 버튼 */
 .writeBtn{
