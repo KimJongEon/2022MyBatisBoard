@@ -54,6 +54,13 @@
 		where postNumber = #{postNumber}
 	</update>
 	
+	<!-- 조회수 증가-->
+	<update id="updateReadCnt" parameterType="com.jongeon.mybatisboard.domain.PostVO">
+		update POST_TB
+		set postReadCount = postReadCount + 1
+		where postNumber = #{postNumber}
+	</update>
+	
 	<!-- 페이징 처리를 위한 sql문▼▼▼▼▼▼▼▼ -->
 	
 	<!-- 전체 글 갯수를 얻어오는 sql문 -->
@@ -65,5 +72,7 @@
 		]]>
 	</select>
 	<!-- 페이징 처리를 위한 sql문▲▲▲▲▲▲▲▲ -->
+	
+	
 	
 </mapper>

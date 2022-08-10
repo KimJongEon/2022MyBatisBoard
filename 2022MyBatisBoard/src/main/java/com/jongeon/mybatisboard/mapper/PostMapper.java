@@ -31,4 +31,7 @@ public interface PostMapper {
 
 	// 페이징을 위한 게시글 전체 개수 가져오기
 	public int postListCnt();
+	
+	// 조회수 증가 메소드
+	public int updateReadCnt(Long postNumber);
 }

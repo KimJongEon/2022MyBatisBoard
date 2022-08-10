@@ -29,6 +29,9 @@ public class PostController {
 			@PathVariable("postNumber") Long postNumber
 			) {
 		
+		//해당 글 조회수 증가
+		postService.updateReadCnt(postNumber);
+		
 		//PathVariable을 통해 받아온 postNumber를 사용
 		//해당 postNumber에 대한 글 정보를 가져온다
 		model.addAttribute("postDetail", postService.postDetail(postNumber));
