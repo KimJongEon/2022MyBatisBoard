@@ -52,7 +52,8 @@ $(function(){
 
 	                    if(mbrIdx == data[i].mbrIdx){
 //	                    	html+= "<a href='#' onclick='delReply(); return false;'>테스트</a>";
-	                    	html+="<input type='button' class='btn btn-dark r_delBtn' value='삭제' name='" +  data[i].replyNumber + "'" + "/>";
+	                    	html+="<input type='button' class='btn btn-danger replyDelBtn' value='삭제' name='" +  data[i].replyNumber + "'" + "/>";
+	                    	html+="<input type='button' class='btn btn-success replyEditBtn' value='수정' name='" +  data[i].replyNumber + "'" + "/>";
 	                    }
 	                    html +=	"</span>";
 	                    html += "<br/>";
@@ -118,13 +119,13 @@ $(function(){
 	}); // click function END	
 	
 	// 댓글 삭제
-	$(document).on("click", ".r_delBtn" , function() { // Jquery 동적 생성 태그 이벤트 부여
-		var replyNumber = this.name;
-		console.log(replyNumber);
+	$(document).on("click", ".replyDelBtn" , function() { // Jquery 동적 생성 태그 이벤트 부여
+		var replyDelConfirm = confirm("정말 삭제 하시겠습니까?");
 		
+		if(replyDelConfirm){ // yes
+			var replyNumber = this.name; //해당 댓글의 replyNumber를 가져온다
 		var data = {'replyNumber' : replyNumber};
-		var jsonData = JSON.stringify(data);
-		
+		var jsonData = JSON.stringify(data); // ajax로 data 보낼때 json형식으로 파싱해서 보낸다.
 		$.ajax({
 			type : "POST",
 			data : jsonData,
@@ -140,7 +141,19 @@ $(function(){
 				}
 			} // success End
 		}); // Ajax End
+		
+		}else{ // no
+			replyList();
+		}
+		
+		
 	}); // 댓글 삭제 End
 	
+	// 댓글 수정
+	$(document).on("click", ".replyEditBtn" , function() { // Jquery 동적 생성 태그 이벤트 부여
+		//댓글 텍스트 에어리어 (취소, 등록 버튼 두개 필요)
+		
+		//수정 후 replyList() 호출
+	});
 	
 }); // function() END

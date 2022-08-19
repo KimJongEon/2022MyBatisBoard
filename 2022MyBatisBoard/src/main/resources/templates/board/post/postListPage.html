@@ -28,7 +28,8 @@ layout:decorate="~{layouts/layout}">
 				<tbody>
 					<tr th:onClick="| location.href='/postDetailPage/' + ${postList.postNumber} | "  th:each="postList : ${postList}" style="cursor: pointer;">
 						<td th:text="${postList.postNumber}"></td>
-						<td th:text="${postList.postTitle}"></td>
+						
+						<td th:text="${postList.postTitle} + ' (' + ${postList.replyCount} + ')' "></td>
 						<td th:text="${postList.mbrNickName}"></td>
 <!-- 						<td th:text="${postList.postDate}"></td> -->
 						<td th:text="${#temporals.format(postList.postDate, 'yyyy-MM-dd HH:mm:ss')}"></td>

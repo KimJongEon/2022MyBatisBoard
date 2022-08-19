@@ -46,7 +46,6 @@ public class HomeController {
 		PagingVO pagingVO = new PagingVO();
 		pagingVO.pageInfo(page, range, postListCnt);
 		
-		
 		// 페이징 처리
 		model.addAttribute("pagingVO", pagingVO);
 		model.addAttribute("postList", postService.postList(pagingVO));

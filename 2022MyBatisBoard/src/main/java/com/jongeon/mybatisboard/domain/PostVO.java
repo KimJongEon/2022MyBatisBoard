@@ -23,6 +23,6 @@ public class PostVO {
 	
 	private String mbrNickName; //글 작성자(닉네임)
 	private String mbrEmail; // 글 작성자 아이디 : 글 수정 페이지에서 사용
-
+	private Long replyCount; // 댓글 총 개수
 } // PostVO End
 

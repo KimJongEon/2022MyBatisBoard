@@ -3,12 +3,14 @@
  
 <mapper namespace="com.jongeon.mybatisboard.mapper.PostMapper">
  
- 	<!-- 글 목록 -->
+ 	<!-- 글 목록 (댓글 개수 포함)-->
     <select id="postList" resultType="com.jongeon.mybatisboard.domain.PostVO">
     	<![CDATA[
-        	select p.*, m.mbrNickName
-        	from POST_TB p, MEMBER_TB m
-        	where p.mbrIdx = m.mbrIdx
+        	select p.*, m.mbrNickName, count(r.replyNumber) as replyCount
+        	from MEMBER_TB m, POST_TB p
+        	left outer join REPLY_TB r on p.postNumber = r.postNumber
+        	where m.mbrIdx = p.mbrIdx
+        	GROUP by p.postNumber
         	order by postNumber desc
         	LIMIT #{startList}, #{listSize};
         ]]>
