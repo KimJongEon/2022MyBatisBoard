@@ -42,10 +42,10 @@ $(function(){
 						var sysdate = new Date(data[i].replyDate);
 	                	sysdate = date_to_str(sysdate);
 						
-	                    html += "<div>";
+	                    html += "<div class='border-bottom border-info' style='margin-bottom : 3%'>";
 	                    html += "<span class='replyNumber' style='display : none;'> "+ data[i].replyNumber +"</span>";
 	                    html += "<span class='r_mbrIdx' style='display : none;'>" +data[i].mbrIdx+ "</span>";
-	                    html += "<span class='text-primary r_mbrNickName'>" +data[i].mbrNickName + "</span>";
+	                    html += "<span class='h3 text-primary r_mbrNickName'>" +data[i].mbrNickName + "</span>";
 	                    html += "<span style='position: absolute; '>" +
 //	                    		"<span class='text-secondary replyDate' >" +'('+ data[i].replyDate + ')'+"</span>";
 								"<span class='text-secondary replyDate' >" +'('+ sysdate + ')'+"</span>"; //날짜 형식 변경
@@ -57,9 +57,7 @@ $(function(){
 	                    }
 	                    html +=	"</span>";
 	                    html += "<br/>";
-	                    html += "<span class='replyContent'>" + data[i].replyContent + " </span>";
-	                    html += "<hr/>";
-	                    
+	                    html += "<span class='replyContent' style='display:inline-block, margin-bottom : 2.5%'>" + data[i].replyContent + " </span>";
 	                    html += "</div>";
 	                    
 //	                    console.log(html);
@@ -149,11 +147,35 @@ $(function(){
 		
 	}); // 댓글 삭제 End
 	
-	// 댓글 수정
+	// 댓글 수정 버튼 클릭 시
 	$(document).on("click", ".replyEditBtn" , function() { // Jquery 동적 생성 태그 이벤트 부여
+		var html = "";
+		var div = $(this).closest("div"); // 해당 댓글의 상위 div
+		var OriginalReplyContent = $(div).find('.replyContent').text(); // div 하위 태그 중 class=replyContent 의 text값 -> 댓글 내용   
+		$(this).remove(); // 수정 버튼 제거
+		$(div).find('.replyContent').remove(); // 댓글 내용 span 태그 제거
+		
+		html = 
+		html += "<div class='input-group replyDiv'>"
+		html += "<textarea class='form-control' id='replyTextArea' rows='3'>"
+		html += OriginalReplyContent
+		html += "</textarea>"
+		html += "<input type='button' class='btn btn-secondary replyEditCancel' value='취소'/>"
+		html += "<input type='button' class='btn btn-success replyEdit' value='등록'/>"
+		html += "</div>";	
+		
+		$(div).append(html);
 		//댓글 텍스트 에어리어 (취소, 등록 버튼 두개 필요)
 		
 		//수정 후 replyList() 호출
-	});
+	}); // 댓글 수정 버튼 클릭 시 End
+	
+	// 댓글 수정 취소 버튼 클릭 시
+	$(document).on("click", ".replyEditCancel" , function() { // Jquery 동적 생성 태그 이벤트 부여
+//		var html = "";
+//		var div = $(this).closest("div"); // 해당 댓글의 상위 div
+	
+		replyList();
+	}); // 댓글 수정 취소 버튼 클릭 시 End
 	
 }); // function() END
