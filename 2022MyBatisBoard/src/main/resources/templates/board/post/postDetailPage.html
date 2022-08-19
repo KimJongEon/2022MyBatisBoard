@@ -16,7 +16,7 @@ layout:decorate="~{layouts/layout}">
 			<div class="container mainDiv">
 					<span style="position: absolute; right: 5.5%;">
 						<span th:text="|작성자 : ${postDetail.mbrNickName}  │  |"></span>
-						<span th:text="${postDetail.postDate}"></span>
+						<span th:text="${#temporals.format(postDetail.postDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
 						
 						<!-- 본인 일때 수정, 삭제 가능 -->
 						<span th:if="${session.getMbrIdx} == ${postDetail.mbrIdx}" >

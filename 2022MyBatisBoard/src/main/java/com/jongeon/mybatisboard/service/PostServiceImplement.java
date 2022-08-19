@@ -19,7 +19,6 @@ public class PostServiceImplement implements PostService {
 	@Override
 	public List<PostVO> postList(PagingVO pagingVO) {
 		// TODO Auto-generated method stub
-		
 		return postMapper.postList(pagingVO);
 		
 	}

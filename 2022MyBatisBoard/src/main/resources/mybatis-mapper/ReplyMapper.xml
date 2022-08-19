@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
- 
+
 <mapper namespace="com.jongeon.mybatisboard.mapper.ReplyMapper">
- 
- <!-- 글 목록 -->
-    <select id="replyList" resultType="com.jongeon.mybatisboard.domain.ReplyVO">
+
+	<!-- 댓글 목록 -->
+	<select id="replyList" resultType="com.jongeon.mybatisboard.domain.ReplyVO">
     	<![CDATA[
         	select r.*, m.mbrNickName
 			from REPLY_TB r, MEMBER_TB m
@@ -12,10 +12,20 @@
 			AND r.postNumber = #{postNumber}
 			ORDER BY replyDate;
         ]]>
-	</select>    
- 
- 	<insert id="replyRegister" parameterType="com.jongeon.mybatisboard.domain.ReplyVO">
- 		insert into REPLY_TB (mbrIdx, postNumber, replyContent)
-		values (#{mbrIdx}, #{postNumber}, #{replyContent})
- 	</insert>
+	</select>
+
+	<!-- 댓글 등록-->
+	<insert id="replyRegister" parameterType="com.jongeon.mybatisboard.domain.ReplyVO">
+		insert into REPLY_TB (mbrIdx, postNumber, replyContent)
+		values (#{mbrIdx},
+		#{postNumber}, #{replyContent})
+	</insert>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="replyDel"  parameterType="com.jongeon.mybatisboard.domain.ReplyVO">
+		delete
+		from REPLY_TB
+		where replyNumber = #{replyNumber}
+	</delete>
+	
 </mapper>

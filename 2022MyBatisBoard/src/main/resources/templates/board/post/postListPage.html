@@ -30,7 +30,8 @@ layout:decorate="~{layouts/layout}">
 						<td th:text="${postList.postNumber}"></td>
 						<td th:text="${postList.postTitle}"></td>
 						<td th:text="${postList.mbrNickName}"></td>
-						<td th:text="${postList.postDate}"></td>
+<!-- 						<td th:text="${postList.postDate}"></td> -->
+						<td th:text="${#temporals.format(postList.postDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 						<td th:text="${postList.postReadCount}"></td>
 					</tr>
 				</tbody>

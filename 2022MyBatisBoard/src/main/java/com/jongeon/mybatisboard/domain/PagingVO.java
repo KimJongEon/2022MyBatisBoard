@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class PagingVO {
-	private int listSize = 5; //  한 페이지당 보여질 리스트의 개수, 초기값으로 목록개수를 5으로 셋팅
+	private int listSize = 10; //  한 페이지당 보여질 리스트의 개수, 초기값으로 목록개수를 5으로 셋팅
 	private int rangeSize = 5; // 한 페이지 범위에 보여질 페이지의 개수 , 초기값으로 페이지범위를 5으로 셋팅
 	private int page; //  현재 목록의 페이지 번호 
 	private int range; // 각 페이지 범위 시작 번호 

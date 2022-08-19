@@ -44,4 +44,18 @@ public class ReplyController {
 //		return null;
 		return replyRegister;
 	}
+	
+	// ##### 댓글 삭제 #####
+	@PostMapping("/replyDel")
+	@ResponseBody
+	public Long replyDel(@RequestBody Map<String, Object> params) {
+		// params.get("postNumber") -> Integer로 넘어온다 Long.valueOf을 사용하여 long타입으로 변경
+		Long replyNumber = Long.valueOf((String) params.get("replyNumber")); 
+		
+		// 댓글 삭제 메소드
+		Long replyDel = replyService.replyDel(replyNumber);
+		
+		return replyDel;
+//		return null;
+	}
 }

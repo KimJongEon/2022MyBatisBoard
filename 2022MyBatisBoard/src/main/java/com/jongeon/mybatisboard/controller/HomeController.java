@@ -45,7 +45,6 @@ public class HomeController {
 		
 		PagingVO pagingVO = new PagingVO();
 		pagingVO.pageInfo(page, range, postListCnt);
-		System.out.println("@@@@@@@@"+pagingVO.getStartList());
 		
 		
 		// 페이징 처리

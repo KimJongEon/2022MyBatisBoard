@@ -11,4 +11,7 @@ public interface ReplyService {
 
 	// 댓글 등록 메소드
 	public Long replyRegister(Long mbrIdx, Long postNumber, String replyContent);
+
+	// 댓글 삭제 메소드
+	public Long replyDel(Long replyNumber);
 }

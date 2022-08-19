@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.jongeon.mybatisboard.domain.PostVO;
 import com.jongeon.mybatisboard.domain.SecurityMember;
@@ -51,26 +53,25 @@ public class PostController {
 	// ##### 글 등록 #####
 	@PostMapping("/postRegister")
 	public String postRegister(PostVO postVO,
-//			Model model,
+//			MultipartHttpServletRequest mtfRequest, // 파일 업로드
 			// @AuthenticationPrincipal 로그인한 유저의 정보를 세션에 담고 필요할때 꺼내어 씀
 			// 해당 유저 정보가 필요할 때마다 DB에 접속할 필요가 없음
 			@AuthenticationPrincipal SecurityMember securityMember // User를 extends한 SecurityMember class 이용
 			) {
-		Long postNumber = (long) 0; // 작성할 글의 postNumber 변수 선언
-		postNumber = postService.findPostNumber().getPostNumber() + 1; // 글 목록 중 제일 최신 글의 postNumber에 +1을 한 후 postNumber라는 변수에 담는다
-		
 		// 빌더패턴으로 PostVO 값을 담아서 postService.postRegister(postVO) 실행
 		postVO = PostVO.builder()
-				.postNumber(postNumber) // 작성 할 글의 postNumber 값 지정
 				.mbrIdx(securityMember.getMemberVO().getMbrIdx()) // securityMember에서 가져온 mbrIdx 값을 PostVO의 mbrIdx에 값을 담는다 
 				.postTitle(postVO.getPostTitle())
 				.postContent(postVO.getPostContent())
 				.build();
 		
+//		MultipartFile fileTest = mtfRequest.getFile("file");
+//		System.out.println("파일테스트 : "+fileTest);
+		
 		// postService의 글 등록 메소드 실행
 		Long postRegister = postService.postRegister(postVO);
+		Long postNumber = postService.findPostNumber().getPostNumber(); // 작성 한 글의 postNumber 찾기
 		
-		System.out.println(postVO.getPostNumber());
 		return "redirect:/postDetailPage/" + postNumber; // 작성한 글의 상세페이지로 이동
 	} // postRegister End
 	
