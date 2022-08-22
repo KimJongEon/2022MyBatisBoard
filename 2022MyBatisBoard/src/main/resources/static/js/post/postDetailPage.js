@@ -22,6 +22,11 @@ $(function(){
 	var mbrIdx = $("#mbrIdx").text();
 	var mbrNickName = $("#mbrNickName").text();
 	
+	//댓글 수정 변수
+	var editButton;
+	var replyEditBtnDiv;
+	var OriginalReplyContent;
+	
 	replyList(); // 댓글 목록 불러오는 함수 호출
 	
 	// 댓글 목록 
@@ -42,11 +47,11 @@ $(function(){
 						var sysdate = new Date(data[i].replyDate);
 	                	sysdate = date_to_str(sysdate);
 						
-	                    html += "<div class='border-bottom border-info' style='margin-bottom : 3%'>";
+	                    html += "<div class='border-bottom border-info' style='margin-bottom : 2.5%'>";
 	                    html += "<span class='replyNumber' style='display : none;'> "+ data[i].replyNumber +"</span>";
 	                    html += "<span class='r_mbrIdx' style='display : none;'>" +data[i].mbrIdx+ "</span>";
 	                    html += "<span class='h3 text-primary r_mbrNickName'>" +data[i].mbrNickName + "</span>";
-	                    html += "<span style='position: absolute; '>" +
+	                    html += "<span class='delEditButton' style='position: absolute; '>" +
 //	                    		"<span class='text-secondary replyDate' >" +'('+ data[i].replyDate + ')'+"</span>";
 								"<span class='text-secondary replyDate' >" +'('+ sysdate + ')'+"</span>"; //날짜 형식 변경
 
@@ -56,8 +61,8 @@ $(function(){
 	                    	html+="<input type='button' class='btn btn-success replyEditBtn' value='수정' name='" +  data[i].replyNumber + "'" + "/>";
 	                    }
 	                    html +=	"</span>";
-	                    html += "<br/>";
-	                    html += "<span class='replyContent' style='display:inline-block, margin-bottom : 2.5%'>" + data[i].replyContent + " </span>";
+//	                    html += "<br/>";
+	                    html += "<p class='replyContent' style=' padding-top : 1.5%; padding-bottom : 0.5%;'>" + data[i].replyContent + " </p>";
 	                    html += "</div>";
 	                    
 //	                    console.log(html);
@@ -150,10 +155,12 @@ $(function(){
 	// 댓글 수정 버튼 클릭 시
 	$(document).on("click", ".replyEditBtn" , function() { // Jquery 동적 생성 태그 이벤트 부여
 		var html = "";
-		var div = $(this).closest("div"); // 해당 댓글의 상위 div
-		var OriginalReplyContent = $(div).find('.replyContent').text(); // div 하위 태그 중 class=replyContent 의 text값 -> 댓글 내용   
+		replyEditBtnDiv = $(this).closest("div"); // 해당 댓글의 상위 div
+		OriginalReplyContent = $(replyEditBtnDiv).find('.replyContent').text(); // div 하위 태그 중 class=replyContent 의 text값 -> 댓글 내용   
+		editButton = $(this);
+		console.log(editButton);
 		$(this).remove(); // 수정 버튼 제거
-		$(div).find('.replyContent').remove(); // 댓글 내용 span 태그 제거
+		$(replyEditBtnDiv).find('.replyContent').remove(); // 댓글 내용 span 태그 제거
 		
 		html = 
 		html += "<div class='input-group replyDiv'>"
@@ -164,18 +171,33 @@ $(function(){
 		html += "<input type='button' class='btn btn-success replyEdit' value='등록'/>"
 		html += "</div>";	
 		
-		$(div).append(html);
+		$(replyEditBtnDiv).append(html);
 		//댓글 텍스트 에어리어 (취소, 등록 버튼 두개 필요)
 		
 		//수정 후 replyList() 호출
 	}); // 댓글 수정 버튼 클릭 시 End
 	
-	// 댓글 수정 취소 버튼 클릭 시
+	// 댓글 수정 '취소' 버튼 클릭 시
 	$(document).on("click", ".replyEditCancel" , function() { // Jquery 동적 생성 태그 이벤트 부여
-//		var html = "";
-//		var div = $(this).closest("div"); // 해당 댓글의 상위 div
-	
-		replyList();
+		var replyNameVal = editButton.attr('name'); // 수정 버튼 name 값
+		
+		// 1. 댓글 수정 텍스트 박스 삭제
+		$(this).closest("div").remove(); // 댓글 수정 text-area 상위 div 삭제
+		
+		// 2. 수정 버튼 재 활성화
+		var html = "";
+		html =
+		html += "<input type='button' class='btn btn-success replyEditBtn' value='수정' name='" +  replyNameVal + "'" + "/>";
+		$(replyEditBtnDiv).find('.delEditButton').append(html); // 수정 버튼 append
+		
+		// 3. 댓글 내용 재 활성화
+		var html = "";
+		html += "<p class='replyContent' style=' padding-top : 1.5%; padding-bottom : 0.5%;'>" + OriginalReplyContent + " </p>";
+		$(replyEditBtnDiv).append(html); // 댓글 내용 append
+		
+		//replyList(); 로 댓글을 다시 불러올 때 DB에 계속 접근하기 때문에 댓글이 많을 시 속도 저하가 우려
 	}); // 댓글 수정 취소 버튼 클릭 시 End
+	
+	// 댓글 수정 '등록' 버튼 클릭 시
 	
 }); // function() END
