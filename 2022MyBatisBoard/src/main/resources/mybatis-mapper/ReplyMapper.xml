@@ -17,8 +17,7 @@
 	<!-- 댓글 등록-->
 	<insert id="replyRegister" parameterType="com.jongeon.mybatisboard.domain.ReplyVO">
 		insert into REPLY_TB (mbrIdx, postNumber, replyContent)
-		values (#{mbrIdx},
-		#{postNumber}, #{replyContent})
+		values (#{mbrIdx}, #{postNumber}, #{replyContent})
 	</insert>
 	
 	<!-- 댓글 삭제 -->
@@ -28,4 +27,11 @@
 		where replyNumber = #{replyNumber}
 	</delete>
 	
+	
+	<!-- 댓글 수정 -->
+	<update id="replyEdit" parameterType="com.jongeon.mybatisboard.domain.ReplyVO">
+		update REPLY_TB
+		set replyContent = #{replyEditContent}
+		where replyNumber = #{replyNumber}
+	</update>
 </mapper>

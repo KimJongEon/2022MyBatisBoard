@@ -18,4 +18,7 @@ public interface ReplyMapper {
 
 	// 댓글 삭제 메소드
 	public Long replyDel(@Param("replyNumber") Long replyNumber);
+
+	// 댓글 수정 메소드
+	public Long replyEdit(@Param("replyNumber") Long replyNumber, @Param("replyEditContent") String replyEditContent);
 }

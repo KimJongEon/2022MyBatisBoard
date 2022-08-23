@@ -58,4 +58,19 @@ public class ReplyController {
 		return replyDel;
 //		return null;
 	}
+	
+	// ##### 댓글 수정 #####
+	@PostMapping("/replyEdit")
+	@ResponseBody
+	public Long replyEdit(@RequestBody Map<String, Object> params) {
+			//	1. json 객체에서 postNumber, replyContent를 가져와 변수에 담는다.
+			// 해당 댓글 번호와 수정된 댓글 내용(replyNumber, replyEditContent)을 가져온다
+			Long replyNumber = Long.parseLong((String) params.get("replyNumber")); // view에서 가져온 replyNumber가 타입이 String
+			String replyEditContent = (String) params.get("replyEditContent");
+			
+			// 2. 댓글 수정 메소드 실행
+			Long replyEdit = replyService.replyEdit(replyNumber, replyEditContent);
+			
+		return replyEdit;
+	}
 }

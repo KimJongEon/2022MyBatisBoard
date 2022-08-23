@@ -35,5 +35,13 @@ public class ReplyServiceImplement implements ReplyService {
 		// TODO Auto-generated method stub
 		return mapper.replyDel(replyNumber);
 	}
+	
+	
+	// 댓글 수정 메소드
+	@Override
+	public Long replyEdit(Long replyNumber, String replyEditContent) {
+		// TODO Auto-generated method stub
+		return mapper.replyEdit(replyNumber, replyEditContent);
+	}
 
 }

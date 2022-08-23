@@ -14,4 +14,7 @@ public interface ReplyService {
 
 	// 댓글 삭제 메소드
 	public Long replyDel(Long replyNumber);
+	
+	// 댓글 수정 메소드
+	public Long replyEdit(Long replyNumber, String replyEditContent);
 }
