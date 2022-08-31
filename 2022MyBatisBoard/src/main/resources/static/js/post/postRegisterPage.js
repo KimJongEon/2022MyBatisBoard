@@ -1,4 +1,32 @@
-//$(document).ready(function() {
+$(function() {
+	$("#btnSave").click(function() {
+		if (!mbrIdx) {
+			alert("로그인이 필요합니다.");
+			window.location.replace("/loginPage"); // 이동 후 뒤로 가기 버튼 클릭 시 홈으로 이동함
+		} else {
+			var postTitle = $("#postTitle").val();
+			var postContent = $("#postContent").val();
+			var spaceCheck = /\s/g; // 스페이스바, 탭 으로 댓글 내용 넣었을 때 체크 하기 위한 변수
+
+
+			if (postTitle.match(spaceCheck) || postTitle == "") {
+				alert("글 제목을 입력 해주세요");
+				$("#postTitle").focus();
+				return false;
+			}
+
+			if (postContent.match(spaceCheck) || postContent == "") { //공백만 존재 할 때
+				alert("글 내용을 입력 해주세요");
+				$("#postContent").focus();
+				return false;
+			}
+		}
+	}); // click function END		
+}); // function() END
+
+
+// $(document).ready(function() {
+	
 //	//파일 첨부 ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼	
 //	var objDragAndDrop = $(".dragAndDropDiv");
 //	var rowCount = 0;
@@ -127,4 +155,4 @@
 //		status.setAbort(jqXHR);
 //	}
 //	//파일 첨부 끝 ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
-//}); // document ready END
+// }); // document ready END

@@ -3,6 +3,7 @@ package com.jongeon.mybatisboard.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,7 +16,7 @@ import com.jongeon.mybatisboard.service.LoginServiceImplement;
 
 import lombok.AllArgsConstructor;
 
-//@EnableWebSecurity
+@EnableWebSecurity
 @Configuration
 @AllArgsConstructor
 public class SecurityConfig{
@@ -48,10 +49,16 @@ public class SecurityConfig{
 	@Bean
 	public SecurityFilterChain sercurityFilterChain(HttpSecurity http) throws Exception {
 		http
-			.csrf().disable() // csrf 토큰 비활성화(테스트시 해놓는게 편함), Security는 csrf토큰이 있어야 접근가능
+		// disable() 안하면 csrf 토큰이 없어 get, post 로 통신 불가능
+		// csrf 토큰 비활성화(테스트시 해놓는게 편함), Security는 csrf토큰이 있어야 접근가능
+//			.csrf().disable() 
+			
 			.authorizeRequests() // ########## (경로) 권한 설정 ##########
 //			.antMatchers("/admin/**").hasRole("ADMIN") // admin 으로 시작하는 경로는 ADMIN 롤을 가진 사용자만 접근 가능
 			.antMatchers("/**").permitAll() // 모든 경로에 대해 권한 없이 접근 가능
+//			.antMatchers("/postDetailPage/**").hasRole("USER")
+//			.antMatchers("/postDetailPage/**").hasAuthority("USER")
+			
 			
 			.and().formLogin() // ########## 로그인 설정 ##########
 			.usernameParameter("mbrEmail") // 아이디 파라미터 [기본 값 "username"] -> "mbrEmail" 변경
@@ -62,7 +69,7 @@ public class SecurityConfig{
 //			.failureUrl("/loginPage") // 로그인 실패시 이동하게 되는 URL			
 			.successHandler(new MyLoginSuccessHandler())//로그인 성공시 Handler 이용하여 처리
 			.failureHandler(new MyLoginFailerHandler())//로그인 실패시 handler 이용하여 처리
-			.permitAll() // 로그인시 이동하게 되는 URL 은 권한 없이 접근 가능
+//			.permitAll() // 로그인시 이동하게 되는 URL 은 권한 없이 접근 가능
 			
 			.and().logout() // ##### 로그아웃 설정 #####
 			.logoutRequestMatcher(new AntPathRequestMatcher("/securityLogOut")) // 로그아웃 URL 설정 , Controller로 가지 않고 가로 챔

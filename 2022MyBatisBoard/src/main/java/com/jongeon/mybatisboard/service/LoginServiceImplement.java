@@ -34,7 +34,8 @@ public class LoginServiceImplement implements UserDetailsService, LoginService {
 		MemberVO memberVO = findUserUsingEmail(mbrEmail);
 		if(memberVO != null) {
 
-			// User를 extends한 로그인한 사용자에 대한 memberVO를 매개변수로 가지는 SecurityMember 생성
+			// User를 extends한 SecurityMember
+			// 로그인한 사용자에 대한 memberVO를 매개변수로 가지는 SecurityMember 생성
 			// 그리고 SecurityMember에 memberVO 저장
 			// securityMember.memberVO.getXXXXX 꺼내어 사용
 			// session 대체 하기 위해 사용

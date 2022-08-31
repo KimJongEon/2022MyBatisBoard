@@ -22,6 +22,11 @@ public class MemberVO {
 	private String mbrRole; // 회원 구분 ex) 회원, 소셜회원, 관리자
 	private LocalDateTime signupDate; // 가입시간
 	
+//	protected MemberVO() {
+//		
+//	}
+	
+	
 	// 회원가입 메소드 - view에서 받아온 회원정보 처리 (비밀번호 암호화)
 	public MemberVO signUp() {
 		MemberVO memberVO = MemberVO.builder()

@@ -91,7 +91,7 @@ $(function(){
 		}else{
 			var replyContent = $("#replyTextArea").val();
 			var spaceCheck = /\s/g; // 스페이스바, 탭 으로 댓글 내용 넣었을 때 체크 하기 위한 변수
-			if(replyContent.match(spaceCheck)){ //공백만 존재 할 때
+			if(replyContent.match(spaceCheck) || replyContent == ""){ //공백만 존재 할 때
 				alert("댓글 내용을 입력 해주세요");
 				
 			}else{ // 공백만 존재 하지 않을 때
@@ -224,6 +224,5 @@ $(function(){
 			}); // ajax END
 		} // else End
 	}); // click function END
-	
 	
 }); // function() END
