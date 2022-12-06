@@ -51,7 +51,7 @@ public class SecurityConfig{
 		http
 		// disable() 안하면 csrf 토큰이 없어 get, post 로 통신 불가능
 		// csrf 토큰 비활성화(테스트시 해놓는게 편함), Security는 csrf토큰이 있어야 접근가능
-//			.csrf().disable() 
+			.csrf().disable() 
 			
 			.authorizeRequests() // ########## (경로) 권한 설정 ##########
 //			.antMatchers("/admin/**").hasRole("ADMIN") // admin 으로 시작하는 경로는 ADMIN 롤을 가진 사용자만 접근 가능
