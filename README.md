@@ -1,9 +1,5 @@
 # 게시판 프로젝트 (2022MyBatisBoard)
 
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/45247057/186087624-4ea70ba2-9aae-47af-aba8-516a33044736.png">
-
-- 게시판 홈 화면
-
 ## 프로젝트 소개
 - 웹 프로그래밍의 기본인 CRUD(Creat, Read, Update, Delete)와 구조를 파악하기 위해 게시판 프로젝트를 시작했습니다.
 - 회원가입 후 글, 댓글을 작성 할 수 있는 기본적인 게시판 입니다.
@@ -278,6 +274,16 @@
 ---
 
 <br><br><br>
+
+# 마치며
+> 아쉬운 점
+- ㅁ
+
+
+> 개선해아할 점
+- ㅁ
+
+
 
 # 마치며
 >후기
