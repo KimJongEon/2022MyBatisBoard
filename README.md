@@ -4,31 +4,6 @@
 - 웹 프로그래밍의 기본인 CRUD(Creat, Read, Update, Delete)와 구조를 파악하기 위해 게시판 프로젝트를 시작했습니다.
 - 회원가입 후 글, 댓글을 작성 할 수 있는 기본적인 게시판 입니다.
 
-## 개발 환경
->운영체제
-- Mac 12.2.1
-
->IDE
-- STS4 (Spinrg Tool Suite 4) 4.14.1
-
->기술
-- JAVA 11
-- DataBase - MariaDB 10.6.7 (AWS RDS)
-- Spring 5.3.21
-- SpringBoot 2.7.1
-- Spinrg Security 5.7.2
-- gradle 7.4.1
-- JavaScript
-- CSS, Bootstrap 5.1.3
-- Thymeleaf
-- jQuery 3.6.0
-
->DataBase
-- Dbeaver (관리 툴)
-- ERD
-![image](https://user-images.githubusercontent.com/45247057/186076297-f82fb01b-9929-40c5-861f-39eaeda7583f.png)
-
-
 ## 구현 기능
 >로그인 (Spring Security)
 - 로그인 시 LoginSeccessHandler를 이용, BCrypt로 암호화 된 사용자 비밀번호 검증
@@ -60,21 +35,7 @@
 - 글 상세 페이지
 - 회원가입 페이지
 
-## 패키지 구조
->요약
-- 이미지
-  - <img width="276" alt="image" src="https://user-images.githubusercontent.com/45247057/187376419-99507e0e-1d55-44ba-8b66-c92f16d1d341.png">
-    
-    - src/main/java
-      - com.jongeon.mybatisboard
-        - config, controller, domain, handler, mapper, service
-    - src/main/resources
-      - templates : thymeleaf를 사용한 .html 파일 관리
-      - mybatis-mapper : mapper.xml 파일 관리
-      - static : css, js, images 등 정적 파일 관리
-      - application.yml 파일은 DB주소, 비밀번호 등 노출되면 안되는 정보가 있기 때문에 github ignore file로 등록하여 관리
-      
----
+
 ## 실행 화면 (하위 카테고리 클릭 시 펼쳐 짐)
 <details>
   <summary>회원가입</summary>
@@ -271,7 +232,32 @@
   ---
 </details>
 
----
+
+
+
+
+## 개발 환경
+>운영체제
+- Mac 12.2.1
+
+>IDE
+- STS4 (Spinrg Tool Suite 4) 4.14.1
+
+>기술
+- JAVA 11
+- DataBase - MariaDB 10.6.7 (AWS RDS)
+- Spring 5.3.21
+- SpringBoot 2.7.1
+- Spinrg Security 5.7.2
+- 
+>DataBase
+- Dbeaver (관리 툴)
+- ERD
+![image](https://user-images.githubusercontent.com/45247057/186076297-f82fb01b-9929-40c5-861f-39eaeda7583f.png)
+
+
+
+
 
 <br><br><br>
 
@@ -296,6 +282,23 @@
 ---
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+## 패키지 구조
+>요약
+- 이미지
+  - <img width="276" alt="image" src="https://user-images.githubusercontent.com/45247057/187376419-99507e0e-1d55-44ba-8b66-c92f16d1d341.png">
+    
+    - src/main/java
+      - com.jongeon.mybatisboard
+        - config, controller, domain, handler, mapper, service
+    - src/main/resources
+      - templates : thymeleaf를 사용한 .html 파일 관리
+      - mybatis-mapper : mapper.xml 파일 관리
+      - static : css, js, images 등 정적 파일 관리
+      - application.yml 파일은 DB주소, 비밀번호 등 노출되면 안되는 정보가 있기 때문에 github ignore file로 등록하여 관리
+      
+---
+
 
 # 마치며
 >후기
@@ -446,7 +449,6 @@
       - 로그인한 사용자의 mbrNickName을 찾을 때 사용
   
     </details>  
-
 
   
 ~~~java
