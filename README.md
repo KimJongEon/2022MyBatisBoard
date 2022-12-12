@@ -267,11 +267,11 @@
 - Controller가 지저분 합니다.
   - controller는 view와 VO의 요청이 있으면 전달 하는 역할만 해주는게 깔끔한데 세션처리를 위한 핑계로 Controller가 복잡해졌습니다.
   - 그래서 비즈니스 로직은 최대한 VO에 혹은 service단에 작성 할 수 있도록 더 노력이 필요하다고 느낍니다.
-
+- controller에서 model 객체를 이용해 return 하는 대신 Rest API 이용하는게
 
 > 후기
 - Spring Boot + gradle은 따로 Tomcat 설치도 필요없고 XML파일 설정할 필요도 거의 없어 편리했습니다.
-- 다음 프로젝트에선 controller에서 model 객체를 이용해 return 하는 대신 Rest API 이용하는 프로젝트를 만들어 볼 예정입니다. (프론트는 React)
+- 로그인시 interceptor가 아닌 좀 더 보안에 Spring Security를 사용하여 
 
 
 
