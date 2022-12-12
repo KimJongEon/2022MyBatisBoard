@@ -15,16 +15,13 @@
 >IDE
 - STS4 (Spinrg Tool Suite 4) 4.14.1
 
->백엔드
+>기술
 - JAVA 11
 - DataBase - MariaDB 10.6.7 (AWS RDS)
 - Spring 5.3.21
 - SpringBoot 2.7.1
 - Spinrg Security 5.7.2
 - gradle 7.4.1
-
->프론트엔드
-- HTML
 - JavaScript
 - CSS, Bootstrap 5.1.3
 - Thymeleaf
