@@ -29,7 +29,7 @@
 ![image](https://user-images.githubusercontent.com/45247057/186076297-f82fb01b-9929-40c5-861f-39eaeda7583f.png)
 
 
-## 주요 기능
+## 구현 기능
 >로그인 (Spring Security)
 - 로그인 시 LoginSeccessHandler를 이용, BCrypt로 암호화 된 사용자 비밀번호 검증
 - 로그인 실패 시 LoginFailerHandler를 이용, 존재하지 않는 사용자 및 비밀번호 불일치시 Alert 창 안내
@@ -289,8 +289,13 @@
 
 
 
-<br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
+절취선
+
+---
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 # 마치며
 >후기
@@ -332,8 +337,6 @@
 
 
 <br><br><br>
-
-
 
 ---
 # 정리
