@@ -256,32 +256,8 @@
 ![image](https://user-images.githubusercontent.com/45247057/186076297-f82fb01b-9929-40c5-861f-39eaeda7583f.png)
 
 
-
-
-
 <br><br><br>
 
-# ✎마치며
-
-> 개선해아할 점
-- Controller가 지저분 합니다.
-  - controller는 view와 VO의 요청이 있으면 전달 하는 역할만 해주는게 깔끔한데 세션처리를 위한 핑계로 Controller가 복잡해졌습니다.
-  - 그래서 비즈니스 로직은 최대한 VO에 혹은 service단에 작성 할 수 있도록 더 노력이 필요하다고 느낍니다.
-- controller에서 model 객체를 이용해 return 하는 방식이 아닌 REST API 이용 (다음 프로젝트 적용 예정)
-
-> 후기
-- Spring Boot + gradle은 따로 Tomcat 설치도 필요없고 XML파일 설정할 필요도 거의 없어 편리했습니다.
-- 로그인 구현시 interceptor나 Spring Security 둘 중 하나가 더 좋은게 아니라 개발 환경에 맞춰 적용해야 한다고 생각합니다.
-
-
-
-<br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
-절취선
-
----
-
-<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 ## 패키지 구조
 >요약
